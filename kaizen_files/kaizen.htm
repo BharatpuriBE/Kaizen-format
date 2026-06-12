@@ -1,0 +1,1826 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0051)https://smlisuzu.net/WEBTA/Kaizen/frmKaizenAdd.aspx -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="ctl00_Head1"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />-->
+    <link href="./kaizen_files/MasterCSS.css" rel="stylesheet" type="text/css"><link href="./kaizen_files/SMLCSS.css" rel="stylesheet" type="text/css">
+
+    <!--FOR CALENDER CONTROL
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" /><link rel="stylesheet" href="/resources/demos/style.css" />
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+END-->
+
+    
+<script language="javascript">
+var dtCh= "/";
+var minYear=1900;
+var maxYear=2100;
+function notEmptyDecimalNumber(elem, helperMsg)
+        {
+	          
+		var alphaExp = /^[0-9\.]+$/;  
+		if(elem.value.length == 0)
+	            {
+		            alert(helperMsg);
+		            elem.focus();
+		            return false;
+	            }
+
+		
+		if(elem.value.match(alphaExp))
+		{
+			return true;
+		}
+		else
+		{
+			alert(helperMsg);
+			elem.focus();
+			return false;
+		}
+	        return true;
+        }
+function notEmptyAlphaNumericSP(elem, helperMsg)
+        {
+	          
+		var alphaExp = /^[0-9a-zA-Z\s-.]+$/;
+		if(elem.value.length == 0)
+	            {
+		            alert(helperMsg);
+		            elem.focus();
+		            return false;
+	            }
+
+		
+		if(elem.value.match(alphaExp))
+		{
+			return true;
+		}
+		else
+		{
+			alert(helperMsg);
+			elem.focus();
+			return false;
+		}
+	        return true;
+        }
+function notempty(elem, helperMsg)
+{
+               if(elem.value.length == 0)
+	            {
+		            alert(helperMsg);
+		            elem.focus();
+		            return false;
+	            }
+	            return true;
+}
+function notEmptyAlphaNumeric(elem, helperMsg)
+        {
+	          
+		var alphaExp = /^[0-9a-zA-Z-.]+$/;
+		if(elem.value.length == 0)
+	            {
+		            alert(helperMsg);
+		            elem.focus();
+		            return false;
+	            }
+
+		
+		if(elem.value.match(alphaExp))
+		{
+			return true;
+		}
+		else
+		{
+			alert(helperMsg);
+			elem.focus();
+			return false;
+		}
+	        return true;
+        }
+
+function NewsDateValidator(){
+	var pdt = document.getElementById('ctl00_formContentHolder_txtpublishdate');
+	               if (isDate(pdt.value,pdt)){
+	                   
+	                            return true;
+	                            
+	                }
+	return false;
+}
+
+function keyDownNumber()
+        { 
+          
+            var key;    
+            if(navigator.appName == 'Microsoft Internet Explorer')
+                key = event.keyCode;
+            else
+                key = event.which        
+ 
+          if ( !(key >= 48 && key <= 57) && key != 8 && key != 46 && key != 36 && key != 37 && key != 190 && !(event.shiftKey) && !(key >= 96 && key <= 105) && key!=110 && key!=9)
+            { 
+         
+                 event.returnValue = false;        
+            }
+            else if((event.shiftKey && key==48)||(event.shiftKey && key==49)||(event.shiftKey && key==50))  event.returnValue = false;   
+            else if((event.shiftKey && key==51)||(event.shiftKey && key==52)||(event.shiftKey && key==53))  event.returnValue = false; 
+            else if((event.shiftKey && key==54)||(event.shiftKey && key==55)||(event.shiftKey && key==56))  event.returnValue = false; 
+            else if(event.shiftKey && key==57)  event.returnValue = false;   
+          
+            
+        }
+
+function DDLnotSelected(elem, helperMsg)
+        {        
+            var index=elem.selectedIndex;
+            var value=elem.options[index].value;
+
+        if(value == "--SELECT--")
+	            {
+		            alert(helperMsg);
+		            elem.focus();
+		            return false;
+	            }
+	            else
+	            {
+	            return true;
+	            }
+     } 
+
+function validateOD()
+{
+         var ddlemp = document.getElementById('ctl00_formContentHolder_ddlemployee');
+         var fromdt = document.getElementById('ctl00_formContentHolder_txtfromdate');
+         var todt = document.getElementById('ctl00_formContentHolder_txttodate');
+         var applydt = document.getElementById('ctl00_formContentHolder_txtapplydate');
+                  if(DDLnotSelected(ddlemp ,"Please select Employee")){
+                    if (isDate(fromdt.value,fromdt)){
+                          if (isDate(todt.value,todt)){	                        
+	                            if (CompareDates1(fromdt,todt)){ 
+	                                  if (isDate(applydt.value,applydt)){	
+	                                      if(CompareDates(applydt)){  
+	                                         return true;
+	                                       }
+	                                    }
+	                               }
+	                         }
+	                   }
+	              }
+	        return false;                                  
+}
+
+
+function ValidateTOLMS()
+{
+    var ddlleavetyp = document.getElementById('ctl00_formContentHolder_DDleaveType');
+    var fromdt = document.getElementById('ctl00_formContentHolder_TxtFrmDate');
+    var ddlfromtyp = document.getElementById('ctl00_formContentHolder_DDFrmDateType');
+    var todt = document.getElementById('ctl00_formContentHolder_TxtToDate');
+    var ddtotype = document.getElementById('ctl00_formContentHolder_DDToDateType');
+    var reason = document.getElementById('ctl00_formContentHolder_TxtLeaveRsn');
+    
+                  if(DDLnotSelected(ddlleavetyp ,"Please select Leave Type")){
+                    if (notempty(fromdt,"Enter valid Date")){
+                       if (isDate(fromdt.value,fromdt)){
+                           if(DDLnotSelected(ddlfromtyp ,"Please select From date Type")){
+                             if (notempty(todt,"Enter valid To Date")){
+                                 if (isDate(todt.value,todt)){	 
+                                     if(DDLnotSelected(ddtotype ,"Please select To date Type")){                       
+	                                     if (notempty(reason,"Enter Reason")){
+	                                         return true;
+	                                       }
+	                                    }
+	                               }
+	                           }    
+	                       }
+	                   }
+	              }
+	         }     
+	        return false;       
+}
+
+function checkqty()
+{
+    var stockqty=document.getElementById('txtcurrentstock');
+    var issuedqty=document.getElementById('txtissuedqty');
+    var unpostedqty=document.getElementById('txtunposted');
+    if(validateMIS()==false)
+    {
+        return false;
+    }
+  
+    if(issuedqty.value.length==0)
+    {
+        alert('Enter Issued qty');
+        return false;
+    }
+    if(Number(issuedqty.value)==0)
+    {
+        alert('Invalid qty');
+        return false;
+    }
+    var qty=Number(stockqty.value)- Number(unpostedqty.value);
+    if(Number(issuedqty.value)>qty)
+    {
+      alert('Issued qty can not be more than available qty');
+        return false;
+    }
+    else
+    {
+    return true;
+    }
+}
+function EmptyDecimalNumber(elem, helperMsg)
+        {
+	          
+		var alphaExp = /^[0-9\.]+$/;  
+	    if(elem.value.length != 0)
+	     {
+		
+		if(elem.value.match(alphaExp))
+		{
+			return true;
+		}
+		else
+		{
+			alert(helperMsg);
+			elem.focus();
+			return false;
+		}
+             }
+	        return true;
+        }
+
+function NONEmptyDecimalNumber(elem, helperMsg)
+        {
+	          
+		var alphaExp = /^[0-9]+$/;  
+		
+		if(elem.value.length == 0)
+	            {
+		            alert(helperMsg);
+		            elem.focus();
+		            return false;
+	            }
+		
+	    if(elem.value.length != 0)
+	     {
+		
+		if(elem.value.match(alphaExp))
+		{
+			return true;
+		}
+		else
+		{
+			alert(helperMsg);
+			elem.focus();
+			return false;
+		}
+             }
+	        return true;
+        }
+
+function ValidateChgPass()
+{
+    var currentpassword = document.getElementById('ctl00_formContentHolder_txtcurrentpassword');
+	var newpassword = document.getElementById('ctl00_formContentHolder_txtnewpassword');
+	var confirmpassword = document.getElementById('ctl00_formContentHolder_txtconfirmnewpass');
+	
+	if(currentpassword.value.length==0)
+	{
+	    alert("Please enter Currentpassword");
+	    currentpassword.focus();
+	    return false;
+	}
+	else if(newpassword.value.length==0)
+	{
+	    alert("Please enter newpassword");
+	    newpassword.focus();
+	    return false;
+	}
+	else if (newpassword.value!=confirmpassword.value)
+	{
+	    alert("New Password and confirm password are not same");
+	    confirmpassword.value="";
+	    newpassword.focus();
+	    return false;
+	}
+	else 
+	{
+	return true;
+	}
+}
+
+
+function BilldispatchValidate(){
+
+	var billno = document.getElementById('ctl00_formContentHolder_txtbillno');
+	var billdate = document.getElementById('ctl00_formContentHolder_txtbilldate');
+	var weight = document.getElementById('ctl00_formContentHolder_txtweight');
+	var ecnno = document.getElementById('ctl00_formContentHolder_txtdraftecnno');
+	  var podate = document.getElementById('ctl00_formContentHolder_txtpodate');
+	          
+	          if (NONEmptyDecimalNumber(billno,"Enter numeric for bill number")){  
+	                 if (notempty(billdate,"Enter valid Date")){
+	                    if (isDate(billdate.value,billdate)){
+	                         if (CompareDates(billdate)){
+	                            if (CompareDates1(podate,billdate)){
+	                                if (EmptyDecimalNumber(weight,"Enter valid Weight value")){
+	                                return true;
+	                               } 
+	                           } 
+	                               
+	                        }   
+	                    }
+	                }
+	            }
+	return false;
+	
+}
+    
+
+
+function validateuserform()
+{
+
+    var ecode = document.getElementById('ctl00_formContentHolder_txtecode');
+	var ename = document.getElementById('ctl00_formContentHolder_txtename');
+	var emailid = document.getElementById('ctl00_formContentHolder_txtemailid');
+	var phoneno = document.getElementById('ctl00_formContentHolder_txtphone');
+	var userid = document.getElementById('ctl00_formContentHolder_txtuserid');
+	var password = document.getElementById('ctl00_formContentHolder_txtpassword');
+	var confirmpass = document.getElementById('ctl00_formContentHolder_txtconpassword');
+	  
+	  
+	     
+	  if (NONEmptyDecimalNumber(ecode,"Enter numeric for ecode")){  
+	      if (notEmptyAlphaNumericSP(ename,"Enter valid Ename")){
+	          if (notEmptyDecimalNumber(phoneno,"Enter valid Phoneno")){ 
+	              if (notempty(emailid,"Enter valid email id")){  
+	                if (notEmptyAlphaNumeric(userid,"Enter valid user id")){ 
+	                    if (notEmptyAlphaNumeric(password,"Enter valid password")){             
+	                                return true;
+	                               } 
+	                           }
+	                         }   
+	                               
+	                     }   
+	                  }
+	                }
+	  return false;
+	
+}
+
+
+
+function compareval(val1,val2)
+{
+
+    if(val1.value<=val2.value)
+    {
+    alert("Less stock can not be adjusted");
+    return false;
+    }else
+    {
+    return true;
+    }
+   
+}
+
+function ValidateExpensegrid(departtime,arrtime)
+{
+     
+          
+	  if (isValidTime(departtime.value,departtime)){  
+	        if (isValidTime(arrtime.value,arrtime)){
+	            return true;
+	        }    
+	     } 
+	  return false;     
+}
+
+function ValidateExpense()
+{
+     var departtime = document.getElementById('txtdeparttime');
+      var arrtime = document.getElementById('txtarrivaltime');
+          
+	  if (isValidTime(departtime.value,departtime)){  
+	        if (isValidTime(arrtime.value,arrtime)){
+	            return true;
+	        }    
+	     } 
+	  return false;     
+}
+
+function ValidateLodgeExpense()
+{
+    var city = document.getElementById('ctl00_formContentHolder_ddlcityto');
+    var approvehotel = document.getElementById('ctl00_formContentHolder_ddlapprovedhotel');
+    var hotelname = document.getElementById('ctl00_formContentHolder_txthotelname');
+    var approvedamt = document.getElementById('ctl00_formContentHolder_txtapprovedamount');
+    var noofday = document.getElementById('ctl00_formContentHolder_txtnoofdayspent');
+    var billno = document.getElementById('ctl00_formContentHolder_txtbillno');
+    var totamt = document.getElementById('ctl00_formContentHolder_txttotamount');
+        
+    var citytext=city.options[city.selectedIndex].innerHTML;
+    var hoteltext=approvehotel.options[approvehotel.selectedIndex].innerHTML;
+  
+    if(citytext=="--SELECT--")
+    {
+        alert("Please Select City");
+       city.focus();
+        return false;
+       
+    }
+    if(hoteltext=="--SELECT--")
+    {
+        alert("Please Select Hotel");
+        approvehotel.focus();
+        return false;
+    }
+    if(hoteltext=="OTHER")
+    {
+       if(hotelname.value.length==0)
+       {
+        alert("Please enter hotel name");
+        hotelname.focus();
+        return false;
+       }
+    }
+          
+	//  if (NONEmptyDecimalNumber(noofday,"Enter No of Day spent")){  
+	        if (notEmptyDecimalNumber(totamt,"Enter Total Bill Amount")){
+	             if(notempty(billno,"Please Enter Bill No")){  
+	                return true;
+	            }    
+	        }    
+	    // } 
+	  return false;     
+}
+
+function checkreason(ddreason,otherreason)
+ {
+     var ddlreason=ddreason.options[ddreason.selectedIndex].innerHTML;
+     if(ddlreason=="--SELECT--")
+        {
+            alert("Please Select Reason for visit");
+            ddreason.focus();
+            return false;
+        }
+        if(ddlreason=="OTHERS")
+        {
+            if(otherreason.value.length==0)
+             {
+                alert("Enter Reason In case of other");
+                otherreason.focus();
+                return false;
+             }   
+        } 
+       return true; 
+    
+ }
+
+function DDLHournotSelected(elem, helperMsg)
+{        
+var index=elem.selectedIndex;
+
+    var value=elem.options[index].value;
+   
+    if(value == "Hour")
+    {
+        alert(helperMsg);
+        elem.focus();
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+} 
+function DDLMintnotSelected(elem, helperMsg)
+{        
+    var index=elem.selectedIndex;
+    var value=elem.options[index].value;
+
+    if(value == "Minute")
+    {
+        alert(helperMsg);
+        elem.focus();
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+} 
+
+function ValidateRequest()
+{
+    var departdate = document.getElementById('ctl00_formContentHolder_txtdepartdate');
+    //var departtime = document.getElementById('ctl00_formContentHolder_txtdeparttime');
+    var visitparty = document.getElementById('ctl00_formContentHolder_txtvisitingparty');
+    var journeydate = document.getElementById('ctl00_formContentHolder_txtjourneydate');
+    var arrivaldate = document.getElementById('ctl00_formContentHolder_txtarrivaldate'); 
+    //var arrivaltime = document.getElementById('ctl00_formContentHolder_txtarrivaltime');  
+    var advance = document.getElementById('ctl00_formContentHolder_txtadvance'); 
+    var ddreason = document.getElementById('ctl00_formContentHolder_ddlreason');    
+    var otherreason = document.getElementById('ctl00_formContentHolder_txtotherreason');  
+
+    var dddepthr = document.getElementById('ctl00_formContentHolder_ddldepthr');  
+    var ddldeptminute = document.getElementById('ctl00_formContentHolder_ddldeptmt');  
+    var ddldeptam = document.getElementById('ctl00_formContentHolder_ddldeptam');  
+
+    var ddlarrhr = document.getElementById('ctl00_formContentHolder_ddlarrhr');  
+    var ddlarrminute = document.getElementById('ctl00_formContentHolder_ddlarrmt');  
+    var ddlarram = document.getElementById('ctl00_formContentHolder_ddlarram');  
+
+    var ddlcityfrom = document.getElementById('ctl00_formContentHolder_ddlcityfrom'); 
+    var ddlcityto = document.getElementById('ctl00_formContentHolder_ddlcityto');
+    var ddljourneymode = document.getElementById('ctl00_formContentHolder_ddljourneymode');
+    var ddlbookedby = document.getElementById('ctl00_formContentHolder_ddlbookedby');
+
+
+                
+    if(notempty(departdate,"Please Enter Departure Date")){
+        if(DDLHournotSelected(dddepthr ,"Please select Departure Hour")){
+            if(DDLMintnotSelected(ddldeptminute ,"Please select Departure Minute")){
+                if(DDLnotSelected(ddldeptam ,"Please select Departure AM/PM")){
+                    if(notempty(arrivaldate,"Please Enter Allival Date")){
+                        if(DDLHournotSelected(ddlarrhr ,"Please select Arrival Hour")){
+                            if(DDLMintnotSelected(ddlarrminute ,"Please select Arrival Minute")){
+                                if(DDLnotSelected(ddlarram ,"Please select Arrival AM/PM")){
+                                    if(notempty(visitparty,"Please Enter Visiting Party")){  
+                                        if(notempty(journeydate,"Please Enter Journey date")){ 
+                                            if(CompareDates1(departdate,journeydate)){
+                                                if(chkadv(advance)){
+                                                    if(checkreason(ddreason,otherreason)){
+                                                        if(DDLnotSelected(ddlcityfrom ,"Please select City From")){
+                                                            if(DDLnotSelected(ddlcityto ,"Please select City To")){
+                                                                if(DDLnotSelected(ddljourneymode ,"Please select Journey Mode")){
+                                                                    if(DDLnotSelected(ddlbookedby ,"Please select Booked by")){
+                                                                        return true;
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                }    
+                            }       
+                        }  
+                    }
+                }
+            }
+        }   
+    } 
+	      
+    return false;      
+}
+
+
+function chkadv(advance)
+{
+var adv=advance.value.length!=0?advance.value:0;
+   if(adv>20000)
+   {
+      alert('You can not request advance greater than Rs.20000');
+      return false;
+   }
+   else
+   {
+      return true;
+   }
+}
+
+function ValidateRequestonsubmit()
+{
+    var departdate = document.getElementById('ctl00_formContentHolder_txtdepartdate');
+    //var departtime = document.getElementById('ctl00_formContentHolder_txtdeparttime');
+    var visitparty = document.getElementById('ctl00_formContentHolder_txtvisitingparty');
+    var journeydate = document.getElementById('ctl00_formContentHolder_txtjourneydate');
+    var arrivaldate = document.getElementById('ctl00_formContentHolder_txtarrivaldate'); 
+    //var arrivaltime = document.getElementById('ctl00_formContentHolder_txtarrivaltime');  
+    var advance = document.getElementById('ctl00_formContentHolder_txtadvance'); 
+    var ddreason = document.getElementById('ctl00_formContentHolder_ddlreason');    
+    var otherreason = document.getElementById('ctl00_formContentHolder_txtotherreason');  
+
+    var dddepthr = document.getElementById('ctl00_formContentHolder_ddldepthr');  
+    var ddldeptminute = document.getElementById('ctl00_formContentHolder_ddldeptmt');  
+    var ddldeptam = document.getElementById('ctl00_formContentHolder_ddldeptam');  
+
+    var ddlarrhr = document.getElementById('ctl00_formContentHolder_ddlarrhr');  
+    var ddlarrminute = document.getElementById('ctl00_formContentHolder_ddlarrmt');  
+    var ddlarram = document.getElementById('ctl00_formContentHolder_ddlarram');  
+                
+    if(notempty(departdate,"Please Enter Departure Date")){
+        if(DDLHournotSelected(dddepthr ,"Please select Departure Hour")){
+          if(DDLMintnotSelected(ddldeptminute ,"Please select Departure Minute")){
+            if(DDLnotSelected(ddldeptam ,"Please select Departure AM/PM")){
+               if(notempty(arrivaldate,"Please Enter Allival Date")){
+                 if(DDLHournotSelected(ddlarrhr ,"Please select Arrival Hour")){
+                    if(DDLMintnotSelected(ddlarrminute ,"Please select Arrival Minute")){
+                      if(DDLnotSelected(ddlarram ,"Please select Arrival AM/PM")){
+                         if(notempty(visitparty,"Please Enter Visiting Party")){  
+                           // if(notempty(journeydate,"Please Enter Journey date")){ 
+                             //  if(CompareDates1(departdate,journeydate)){
+                                  if(chkadv(advance)){
+                                    if(checkreason(ddreason,otherreason)){
+                                         return true;
+                                    }
+                                }
+                             //}
+                           //}
+                        }
+
+                     }    
+                 }       
+            }  
+         }
+         }
+        }
+        }   
+    } 
+	      
+    return false;     
+}
+
+function ValidateEMPODonsubmit()
+{
+     var OutTime = document.getElementById('ctl00_formContentHolder_TxtOutTime');    
+              // alert(OutTime.value);
+	             if(isValidTime(OutTime.value,OutTime)){
+//	              if (OutTime.length < 9){
+//				    alert('should have miniumum 8 chars');				
+	               return true;
+//	               }
+	             }    
+	            return false;     
+}
+function ValidateTBSonsubmit()
+{
+     var st = document.getElementById('ctl00_formContentHolder_TxtStTime');
+          
+     var ddSAM = document.getElementById('ctl00_formContentHolder_DDSAM');        
+     var index=ddSAM.selectedIndex;
+     var Svalue=ddSAM.options[index].value; 
+     var sttime=st.value+" "+Svalue;    
+   
+     
+     var rlt = document.getElementById('ctl00_formContentHolder_TxtRcTime');        
+     var ddRAM = document.getElementById('ctl00_formContentHolder_DDRAM');             
+     var index=ddRAM.selectedIndex;
+     var Rvalue=ddRAM.options[index].value;
+     var rltime=rlt.value+" "+Rvalue;  
+
+     if(isValidTime(sttime,st))
+        { 	               
+	        if(isValidTime(rltime,rlt))
+	          { 			
+	              return true;
+	           }
+	     }   
+	  
+	 return false;     
+}
+
+function ValidateExpenseStmt()
+{
+     var partyname = document.getElementById('ctl00_formContentHolder_txtpartyname');
+     var billno = document.getElementById('ctl00_formContentHolder_txtbillno');
+     var billdate = document.getElementById('ctl00_formContentHolder_txtbilldate');
+     var amount = document.getElementById('ctl00_formContentHolder_txtamount');
+              
+	      if(notempty(partyname,"Please Enter Partyname")){  
+	           if(notempty(billno,"Please Enter Bill No")){  
+	                if(notempty(billdate,"Please Enter bill date")){ 
+	                   if(isDate(billdate.value,billdate)){ 
+	                      if(notempty(amount,"Please Enter bill Amount")){  
+	                       return true;
+	                      }
+	                  }
+	             }
+	           }
+	        } 
+	  return false;     
+}
+
+function ValidateLocalConveyance()
+{
+     var purpose = document.getElementById('ctl00_formContentHolder_txtpurpose');
+      var journeydate = document.getElementById('ctl00_formContentHolder_txtjourneydate');
+     var departstation = document.getElementById('ctl00_formContentHolder_txtdepartstation');
+     var departtime = document.getElementById('ctl00_formContentHolder_txtdeparttime');
+         
+     var arrivalstation = document.getElementById('ctl00_formContentHolder_txtarrivalstation');
+      var arrivaltime = document.getElementById('ctl00_formContentHolder_txtarrivaltime');
+     var distance = document.getElementById('ctl00_formContentHolder_txtdistance');
+     var amount = document.getElementById('ctl00_formContentHolder_txtamount');
+  
+           if(notempty(purpose,"Please Enter Purpose")){       
+	          if(notempty(journeydate,"Please Enter Journeydate Date")){  
+	             if(isDate(journeydate.value,journeydate)){  
+	                if(notempty(departstation,"Please Enter Departure Station")){  
+          	           if(isValidTime(departtime.value,departtime)){  
+	                      if(notempty(arrivalstation,"Please Enter arrival Station")){
+	                         if(isValidTime(arrivaltime.value,arrivaltime)){ 
+	                            if(notempty(distance,"Please Enter distance")){   
+	                            
+	                                    return true;
+	                                 
+	                               }
+	                           }
+	                        }
+	                      }
+	                   }              
+	                }
+	            }
+	       } 
+	  return false;     
+}
+
+
+
+
+function isValidTime(value,dtime) {
+    
+   var hasMeridian = false;
+   var re = /^\d{1,2}[:]\d{2}( [aApP][mM]?)?$/;
+   if (!re.test(value))
+    {
+       
+        
+        dtime.focus();
+        alert('Invalid Format. Use hh:mm am fromat ');
+         return false; 
+    }
+   if (value.toLowerCase().indexOf("p") != -1) {
+       hasMeridian = true; 
+       
+    }
+   
+   if (value.toLowerCase().indexOf("a") != -1) {
+    hasMeridian = true; 
+    
+    }
+    
+       var values = value.split(":");
+   if(hasMeridian==false)
+   {      
+       if ( (parseFloat(values[0]) < 0) || (parseFloat(values[0]) > 12) ) {
+           
+            dtime.focus();
+             alert('Invalid Format. Use hh:mm am fromat ');
+             return false; 
+         }
+    }     
+   if (hasMeridian) {
+      if ( (parseFloat(values[0]) < 1) || (parseFloat(values[0]) > 12) ) { 
+       
+         dtime.focus();
+           alert('Invalid Format. Use hh:mm am fromat ');
+         return false; 
+         }
+   }
+   if ( (parseFloat(values[1]) < 0) || (parseFloat(values[1]) > 59) ) { 
+        
+         dtime.focus();
+          alert('Invalid Format. Use hh:mm am fromat ');
+         return false; 
+        }
+   if (values.length > 2) {
+      if ( (parseFloat(values[2]) < 0) || (parseFloat(values[2]) > 59) ) { 
+      
+       dtime.focus();
+        alert('Invalid format. Use hh:mm am fromat ');
+         return false; 
+      }
+   }
+   return true;
+}
+
+
+function CompareDates1(strdt1,strdt2)
+{
+    
+    var str1 = strdt1.value;
+    
+    var pos11=str1.indexOf(dtCh)
+	var pos22=str1.indexOf(dtCh,pos11+1)
+    
+    var cmonth = str1.substring(pos11+1,pos22)
+    var cday = str1.substring(0,pos11)
+    var cyear = str1.substring(pos22+1)
+    
+    var str2 = strdt2.value;
+    var pos1=str2.indexOf(dtCh)
+	var pos2=str2.indexOf(dtCh,pos1+1)
+	var gMonth=str2.substring(pos1+1,pos2)
+	
+	var gDay=str2.substring(0,pos1)
+	var gYear=str2.substring(pos2+1)
+    var date1 = new Date(Number(cyear),Number(cmonth-1),Number(cday));
+    var date2 = new Date(Number(gYear), Number(gMonth-1), Number(gDay));
+      
+     if(date2 <date1)
+    {
+        alert("Journey date can not be less than departure date ");
+        strdt2.focus();
+        return false;
+        
+    }
+    else
+    {
+        return true;
+    }
+}
+
+function CompareDates(str)
+{
+    var str1 = new Date();
+    var cmonth = str1.getMonth();
+    var cday = str1.getDate();
+    var cyear = str1.getFullYear();
+    var str2 = str.value;
+    
+    var pos1=str2.indexOf(dtCh)
+	var pos2=str2.indexOf(dtCh,pos1+1)
+	var gMonth=str2.substring(pos1+1,pos2)
+	var gDay=str2.substring(0,pos1)
+	var gYear=str2.substring(pos2+1)
+    var date1 = new Date(cyear, cmonth, cday);
+    var date2 = new Date(Number(gYear), Number(gMonth-1), Number(gDay));
+       
+     if(date2 >date1)
+    {
+        alert("Date cannot be greater than Current date");
+        str.focus();
+        return false;
+        
+    }
+    else
+    {
+        return true;
+    }
+}
+
+function dateAdd(datepart,number,objDate){
+           y = objDate.getFullYear();
+           m = objDate.getMonth()+1;
+           d = objDate.getDate();
+           hr =     objDate.getHours();
+           mn =     objDate.getMinutes();
+           sc =     objDate.getSeconds();
+           newY=y;
+           newM=m;
+           newD=d;
+           if (datepart== 'y'){
+                newY = parseInt(y) + parseInt(number);
+           } else if (datepart== 'm') {
+                newM = parseInt(m) + parseInt(number);
+           } else {
+                newD = parseInt(d) + parseInt(number);
+           }
+           objNewDate = new Date(newY,newM,newD,hr,mn,sc);
+            var str1 = objNewDate;
+            var cmonth = str1.getMonth();
+            var cday = str1.getDate();
+            var cyear = str1.getFullYear();
+            alert(cday+'/'+cmonth+'/'+cyear);
+         
+           return objNewDate;
+      }
+
+
+
+function isInteger(s){
+	var i;
+    for (i = 0; i < s.length; i++){   
+             var c = s.charAt(i);
+        if (((c < "0") || (c > "9"))) return false;
+    }
+     return true;
+}
+
+function stripCharsInBag(s, bag){
+	var i;
+    var returnString = "";
+    // Search through string's characters one by one.
+    // If character is not in bag, append to returnString.
+    for (i = 0; i < s.length; i++){   
+        var c = s.charAt(i);
+        if (bag.indexOf(c) == -1) returnString += c;
+    }
+    return returnString;
+}
+
+function daysInFebruary (year){
+	// February has 29 days in any year evenly divisible by four,
+    // EXCEPT for centurial years which are not also divisible by 400.
+    return (((year % 4 == 0) && ( (!(year % 100 == 0)) || (year % 400 == 0))) ? 29 : 28 );
+}
+
+function DaysArray(n) {
+	for (var i = 1; i <= n; i++) {
+		this[i] = 31
+		if (i==4 || i==6 || i==9 || i==11) {this[i] = 30}
+		if (i==2) {this[i] = 29}
+   } 
+   return this
+}
+
+function isDate(dtStr,elem){
+	var daysInMonth = DaysArray(12)
+	var pos1=dtStr.indexOf(dtCh)
+	var pos2=dtStr.indexOf(dtCh,pos1+1)
+	var strMonth=dtStr.substring(pos1+1,pos2)
+	var strDay=dtStr.substring(0,pos1)
+	var strYear=dtStr.substring(pos2+1)
+	strYr=strYear
+	/*alert(pos1)
+	alert(pos2)
+	alert(strMonth)
+	alert(strDay)
+	alert(strYear)*/
+	
+	if(dtStr=='')
+	{
+	return true;
+	}
+
+	if (strDay.charAt(0)=="0" && strDay.length>1) strDay=strDay.substring(1)
+	if (strMonth.charAt(0)=="0" && strMonth.length>1) strMonth=strMonth.substring(1)
+	for (var i = 1; i <= 3; i++) {
+		if (strYr.charAt(0)=="0" && strYr.length>1) strYr=strYr.substring(1)
+	}
+	month=parseInt(strMonth)
+	day=parseInt(strDay)
+	year=parseInt(strYr)
+	if (pos1==-1 || pos2==-1){
+		
+		  elem.focus()
+		  alert("The date format should be : dd/mm/yyyy")
+		return false
+	}
+	if (strMonth.length<1 || month<1 || month>12){
+		
+		  elem.focus()
+		  alert("Please enter a valid month")
+		return false
+	}
+	if (strDay.length<1 || day<1 || day>31 || (month==2 && day>daysInFebruary(year)) || day > daysInMonth[month]){
+		
+		  elem.focus()
+		  alert("Please enter a valid day")
+		return false
+	}
+	if (strYear.length != 4 || year==0 || year<minYear || year>maxYear){
+		
+		  elem.focus()
+		  alert("Please enter a valid 4 digit year between "+minYear+" and "+maxYear)
+		return false
+	}
+	if (dtStr.indexOf(dtCh,pos2+1)!=-1 || isInteger(stripCharsInBag(dtStr, dtCh))==false){
+		
+		  elem.focus()
+		  alert("Please enter a valid date")
+		return false
+	}
+return true
+}
+
+function isNumberKeyNumber(key) {
+    //getting key code of pressed key
+    var keycode = (key.which) ? key.which : key.keyCode;
+     if (keycode > 31 && (keycode < 48 || keycode > 57 ) && keycode!=47)
+      {
+        alert(" You can enter only characters 0 to 9 ");
+        return false;
+    }
+    else return true;
+} 
+
+</script><title>
+	SML ISUZU
+</title>
+    <script type="text/javascript" language="javascript" src="./kaizen_files/datetimepicker.js.download"> </script>
+
+    <script type="text/javascript"> window.history.forward(1); </script>
+    <script type="text/javascript">
+
+        function keyDownNumber() {
+            var key;
+            if (navigator.appName == 'Microsoft Internet Explorer')
+                key = event.keyCode;
+            else
+                key = event.which
+            //alert(key);
+            if (!(key >= 48 && key <= 57) && key != 8 && key != 46 && key != 36 && key != 37 && key != 190 && !(key >= 97 && key <= 105) && key != 110 && key != 9 && key != 96) {
+                event.returnValue = false;
+            }
+        }
+
+
+
+
+
+
+
+    </script>
+    <style type="text/css">
+        DIV#cntBody {
+            text-align: left;
+            width: 870px;
+            min-height: 100%;
+            height: auto;
+            margin: 0px auto;
+            border: 0px;
+            padding: 0px 0px 0px 10px;
+            background-color: #eee;
+        }
+
+        body {
+            font-family: verdana;
+            font-size: 11px;
+        }
+
+        span.tooltip {
+            border-bottom: 1px dotted green;
+        }
+    </style>
+        
+    <style type="text/css">        
+        body
+        {
+            margin: 0;
+            padding: 0;
+            font-family: Arial;
+        }
+        .modal
+        {
+            position: fixed;
+            z-index: 999;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            background-color: Black;
+            filter: alpha(opacity=65);
+            opacity: 0.65;
+            -moz-opacity: 0.8;
+        }
+        .center
+        {
+            z-index: 1000;
+            margin: 300px auto;
+            padding: 10px;
+            width: 130px;
+            background-color: White;
+            border-radius: 10px;
+            filter: alpha(opacity=100);
+            opacity: 1;
+            -moz-opacity: 1;
+        }
+        .center img
+        {
+            height: 128px;
+            width: 128px;
+        }
+        /*CSS FOR MODAL POPUP PANEL*/
+        .SMLPopUpPanel {
+            /*Width: 90%;*/
+            Height: 85%;
+            background-color: #FFFFFF; /*FFD9D5*/
+            border-width: 3px;
+            border-style: solid;
+            border-color: mediumspringgreen;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 20px;
+            overflow: scroll;
+        }
+    </style> 
+    
+<link href="./kaizen_files/WebResource.axd" type="text/css" rel="stylesheet"><link href="./kaizen_files/WebResource(1).axd" type="text/css" rel="stylesheet"></head>
+<body>
+    <form name="aspnetForm" method="post" action="https://smlisuzu.net/WEBTA/Kaizen/frmKaizenAdd.aspx" onsubmit="javascript:return WebForm_OnSubmit();" id="aspnetForm" enctype="multipart/form-data">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTEzMzc3NzIzMjcPZBYCZg9kFgICAw8WAh4HZW5jdHlwZQUTbXVsdGlwYXJ0L2Zvcm0tZGF0YRYGAgEPDxYCHgRUZXh0BSFHQUdBTkRFRVAgU0lOR0ggU09ESEkgKFNNLTAwNTIxMSlkZAIDDw8WAh8BBRZTYXR1cmRheSwgSnVseSA2LCAyMDI0ZGQCCQ9kFgICAw9kFgJmD2QWBAIXDw8WAh8BBQowNi8wNy8yMDI0ZGQCZw88KwARAgEQFgAWABYADBQrAABkGAIFHl9fQ29udHJvbHNSZXF1aXJlUG9zdEJhY2tLZXlfXxYNBRBjdGwwMCRpbWdidG5Ib21lBRJjdGwwMCRpbWdidG5Mb2dvdXQFImN0bDAwJGZvcm1Db250ZW50SG9sZGVyJGltZ2J0bkJhY2sFI2N0bDAwJGZvcm1Db250ZW50SG9sZGVyJGNoa1Byb2RDYXRnBSNjdGwwMCRmb3JtQ29udGVudEhvbGRlciRjaGtRbHR5Q2F0ZwUjY3RsMDAkZm9ybUNvbnRlbnRIb2xkZXIkY2hrQ29zdENhdGcFI2N0bDAwJGZvcm1Db250ZW50SG9sZGVyJGNoa0RlbHZDYXRnBSNjdGwwMCRmb3JtQ29udGVudEhvbGRlciRjaGtTZnR5Q2F0ZwUjY3RsMDAkZm9ybUNvbnRlbnRIb2xkZXIkY2hrTW9ybENhdGcFI2N0bDAwJGZvcm1Db250ZW50SG9sZGVyJGNoa1BreWtDYXRnBS9jdGwwMCRmb3JtQ29udGVudEhvbGRlciRjaGtIb3Jpem9udGFsRGVwbG95bWVudAUiY3RsMDAkZm9ybUNvbnRlbnRIb2xkZXIkY2hrQ29uZmlybQUfY3RsMDAkZm9ybUNvbnRlbnRIb2xkZXIkY2hrUG9zdAUaY3RsMDAkZm9ybUNvbnRlbnRIb2xkZXIkZ3YPZ2RiXggbNuTB+msBrypMDIAj7iJ7nmV6DbCoIBXYmJMfoA==">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="./kaizen_files/WebResource(2).axd" type="text/javascript"></script>
+
+
+<script src="./kaizen_files/ScriptResource.axd" type="text/javascript"></script>
+<script src="./kaizen_files/ScriptResource(1).axd" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+//]]>
+</script>
+
+<script src="./kaizen_files/ScriptResource(2).axd" type="text/javascript"></script>
+<script src="./kaizen_files/ScriptResource(3).axd" type="text/javascript"></script>
+<script src="./kaizen_files/ScriptResource(4).axd" type="text/javascript"></script>
+<script src="./kaizen_files/ScriptResource(5).axd" type="text/javascript"></script>
+<script src="./kaizen_files/ScriptResource(6).axd" type="text/javascript"></script>
+<script src="./kaizen_files/ScriptResource(7).axd" type="text/javascript"></script>
+<script src="./kaizen_files/ScriptResource(8).axd" type="text/javascript"></script>
+<script src="./kaizen_files/ScriptResource(9).axd" type="text/javascript"></script>
+<script src="./kaizen_files/ScriptResource(10).axd" type="text/javascript"></script>
+<script src="./kaizen_files/ScriptResource(11).axd" type="text/javascript"></script>
+<script src="./kaizen_files/ScriptResource(12).axd" type="text/javascript"></script>
+<script src="./kaizen_files/ScriptResource(13).axd" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+</script>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="5DB2F990">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdADYQwj0Dh/UCe4Y6Z4629izaCc62CUTIMSkKzRawaCg5kM6LxcAf3ncwbp/RMrmifpGUPfH6XJqT6Xym4x01uxM3k5Gd4PlFmQmJoFuomgUbSkGwwVPDBKvEjQR31vtmljqQZtvaShAgth4HsCIeWsfbzYAf8DFFbvWKxcyfQMW8v8LtgOjRsSBOokvRMmJ2XZKp6TExTNxPGEZCpzM5s4Uez35dwLSqlVO6vcxnz+DNMZaqgoxMewsQnBWzh0f18YDqp1c93FUJdyctPfJmCUJumUJoDzzXSgD+O3JXvCssMa7l1MytCeJdyf0hd9XvsSgcHLqsqGuGTkZizPqXvhruCkeCrzcVBL1u2JmbP8PT4yMryHy3iRCifU/ZRLkKSbliSQkVMvlUD+3JVYKsy54QidIW6LPq1xztoZX5AKNFzKPeCJmtpOxqYq6xYA81CwXko/FbrB/lgFQr19MzlaHEaYGNBhLn8jRfD28CDxClCZZY1Sux98mLwks47FUfiHjzVeBwC6Ai6QhiKZKMbpZPCXmDEV3WZwQ/oNZ1UcdtbAHaLfnZf5IJCgaBz9H8M6Qtc/mCmL4pdzTYhl0uMEEDvcGCRzZirdXfarc0asUZPTS6wcNHgv/C5L2Ya+jVm0FeStm0kRWDeUwJsfpNaHjVjLT0pCd7xcPkfT1zjvrl3xBtcyU9RNE5bbIPm1xsBjnHhbXGaq6qa/2bJt3FI+nja5YeA4K/MSqvPGh71TExwPsyL5UtwDTtPQ5OpvUY8ACpXsdz2WnXH0JaPcyIVjom49iDz98exzyH6+tjPymyEwJ+2zG2JiLoy3x0v+oycIgtxpMVfiYHD3wDmey6iyXq7HnWG+/nyokclwsYsiREILoM9SbtyhOYGU20K1VEVC8+TdTLYCVUfRuAcXZ13ySY1E4MZMn0BoXPYNAFMxG233nD4dDRdVtOEFXHElGhRiHZ3lYRxJlraqbURC2EDhbpNYPHNUaU5oEJBM5Fi0zdJ+4t0GE/6dzwEjdAMmoZjjyQrtyuNYTleQw49aqZRN/4N9cypOulTAMmF+M6r9s/6DfYviQZNGmFLAXB839HmJQjr9EZx0L/eNIOT6gT90jC3ShTNcCgvR0tKap9et11hw89NcZd06CdZD7sVnsWgru7nHqOlZy5n9VOgVz0RgYUKJAdkdDyiPXd9zPnn3Hd0A==">
+</div>
+        <table width="100%" style="height: 100px">
+            <tbody>
+                <tr>
+                    <td align="left" width="160">
+                        <img border="0" src="./kaizen_files/headerRight.gif" alt="">
+                    </td>
+                    <td align="left">&nbsp;<img src="./kaizen_files/banner.bmp" style="width: 100%; height: 110px"></td>
+
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <table width="100%">
+                <tbody><tr>
+                    <td style="text-align: left;" align="left" class="SMLHeaderRow">Welcome :
+                                <span id="ctl00_labelName" class="SMLLabelLeftMenu">GAGANDEEP SINGH SODHI (SM-005211)</span>
+                    </td>
+                    <td align="right" class="SMLLabel">
+                        <span id="ctl00_lblDatetime" style="color:#CC0000;font-family:Verdana;font-size:Smaller;font-weight:bold;font-style:normal;">Saturday, July 6, 2024</span>
+                        <input type="image" name="ctl00$imgbtnHome" id="ctl00_imgbtnHome" title="Home" src="./kaizen_files/HomeIcon.jpg" style="height:30px;width:30px;border-width:0px;">
+                                <input type="image" name="ctl00$imgbtnLogout" id="ctl00_imgbtnLogout" title="Logout" src="./kaizen_files/LogoutIcon.jpg" style="height:30px;width:30px;border-width:0px;">
+                    </td>
+                    
+                </tr>
+            </tbody></table>
+            <table width="100%">
+                <tbody><tr>
+                    <td valign="top">
+                        
+    <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$formContentHolder$ScriptManager1', 'aspnetForm', ['tctl00$formContentHolder$updpnl',''], [], ['ctl00$formContentHolder$btnSubmit',''], 90, 'ctl00');
+//]]>
+</script>
+
+
+    <div id="ctl00_formContentHolder_updpnl">
+	
+            <table border="0" width="100%">
+                <tbody><tr>
+                    <td align="center" class="SMLFormHeaderFont">ADD/UPDATE KAIZEN
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left">
+                        <input type="image" name="ctl00$formContentHolder$imgbtnBack" id="ctl00_formContentHolder_imgbtnBack" src="./kaizen_files/back.jpg" style="height:20px;width:55px;border-width:0px;">
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" valign="top" class="SMLLabel">
+                        <table border="0" cellspacing="0" cellpadding="3" width="98%">
+                            <tbody><tr>
+                                <th align="right" valign="top">
+                                    <span id="ctl00_formContentHolder_lblKaizenNo" class="SMLLabel" style="color:Red;">Kaizen No</span>
+                                </th>
+                                <td align="left" valign="top">
+                                    <input name="ctl00$formContentHolder$txtKaizenNo" type="text" id="ctl00_formContentHolder_txtKaizenNo" disabled="disabled" class="SMLTextinputText" style="width:120px;">
+                                </td>
+                                <td align="right" valign="top">Kaizen Sr No
+                                </td>
+                                <td align="left" valign="top">
+                                    <input name="ctl00$formContentHolder$txtKaizenSrNo" type="text" id="ctl00_formContentHolder_txtKaizenSrNo" disabled="disabled" class="SMLTextinputText" style="width:150px;">
+                                </td>
+                                <td align="right" valign="top">Start Date
+                                </td>
+                                <td align="left" valign="top">
+                                    <input name="ctl00$formContentHolder$txtStartDate" type="text" id="ctl00_formContentHolder_txtStartDate" class="SMLTextinputText" style="width:150px;">
+                                    
+                                    <br>
+                                    <span id="ctl00_formContentHolder_RequiredFieldValidator3" class="SMLLabel" style="color:Red;display:none;">Enter Start Date</span>
+                                    <span id="ctl00_formContentHolder_RegularExpressionValidator2" class="SMLLabel" style="color:Red;display:none;">Invalid Date. Format: 01/04/2018.</span>
+                                </td>
+                                <td align="right" valign="top">Cut Off Date
+                                </td>
+                                <td align="left" valign="top">
+                                    <input name="ctl00$formContentHolder$txtCutOffDate" type="text" id="ctl00_formContentHolder_txtCutOffDate" class="SMLTextinputText" style="width:150px;">
+                                    
+                                    <br>
+                                    <span id="ctl00_formContentHolder_RegularExpressionValidator4" class="SMLLabel" style="color:Red;display:none;">Invalid Date. Format: 01/04/2018.</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right" valign="top">Kaizen Date
+                                </td>
+                                <td align="left" valign="top">
+                                    <input name="ctl00$formContentHolder$txtKaizenDate" type="text" value="06/07/2024" id="ctl00_formContentHolder_txtKaizenDate" disabled="disabled" class="SMLTextinputText" style="width:120px;">
+                                </td>
+                                <td align="right" valign="top">Plant
+                                </td>
+                                <td align="left" valign="top">
+                                    <select name="ctl00$formContentHolder$ddPlant" id="ctl00_formContentHolder_ddPlant" class="SMLDropdownbox" style="width:152px;">
+		<option value="--SELECT--">--SELECT--</option>
+		<option value="1">SML</option>
+		<option value="2">BUS</option>
+		<option value="3">CITY OFFICE</option>
+		<option value="4">ZONAL OFFICE</option>
+
+	</select>
+                                    <br>
+                                    <span id="ctl00_formContentHolder_RequiredFieldValidator1" class="SMLLabel" style="color:Red;display:none;">Select Plant</span>
+                                </td>
+                                <td align="right" valign="top">Completion Date
+                                </td>
+                                <td align="left" valign="top">
+                                    <input name="ctl00$formContentHolder$txtCompletionDate" type="text" id="ctl00_formContentHolder_txtCompletionDate" class="SMLTextinputText" style="width:150px;">
+                                    
+                                    <br>
+                                    <span id="ctl00_formContentHolder_RequiredFieldValidator5" class="SMLLabel" style="color:Red;display:none;">Enter Completion Date</span>
+                                    <span id="ctl00_formContentHolder_RegularExpressionValidator1" class="SMLLabel" style="color:Red;display:none;">Invalid Date. Format: 01/04/2018.</span>
+                                </td>
+                                <td align="right" valign="top">Cut Off No
+                                </td>
+                                <td align="left" valign="top">
+                                    <input name="ctl00$formContentHolder$txtCutOffNo" type="text" id="ctl00_formContentHolder_txtCutOffNo" class="SMLTextinputText" style="width:150px;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right" valign="middle">Category
+                                </td>
+                                <td align="left" valign="top" colspan="3">
+                                    <input id="ctl00_formContentHolder_chkProdCatg" type="checkbox" name="ctl00$formContentHolder$chkProdCatg" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$formContentHolder$chkProdCatg\&#39;,\&#39;\&#39;)&#39;, 0)"><label for="ctl00_formContentHolder_chkProdCatg">Production</label>
+                                    <input id="ctl00_formContentHolder_chkQltyCatg" type="checkbox" name="ctl00$formContentHolder$chkQltyCatg" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$formContentHolder$chkQltyCatg\&#39;,\&#39;\&#39;)&#39;, 0)"><label for="ctl00_formContentHolder_chkQltyCatg">Quality</label>
+                                    <input id="ctl00_formContentHolder_chkCostCatg" type="checkbox" name="ctl00$formContentHolder$chkCostCatg" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$formContentHolder$chkCostCatg\&#39;,\&#39;\&#39;)&#39;, 0)"><label for="ctl00_formContentHolder_chkCostCatg">Cost</label>
+                                    <input id="ctl00_formContentHolder_chkDelvCatg" type="checkbox" name="ctl00$formContentHolder$chkDelvCatg" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$formContentHolder$chkDelvCatg\&#39;,\&#39;\&#39;)&#39;, 0)"><label for="ctl00_formContentHolder_chkDelvCatg">Delivery</label>
+                                    <input id="ctl00_formContentHolder_chkSftyCatg" type="checkbox" name="ctl00$formContentHolder$chkSftyCatg" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$formContentHolder$chkSftyCatg\&#39;,\&#39;\&#39;)&#39;, 0)"><label for="ctl00_formContentHolder_chkSftyCatg">Safety</label>
+                                    <input id="ctl00_formContentHolder_chkMorlCatg" type="checkbox" name="ctl00$formContentHolder$chkMorlCatg" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$formContentHolder$chkMorlCatg\&#39;,\&#39;\&#39;)&#39;, 0)"><label for="ctl00_formContentHolder_chkMorlCatg">Moral</label>
+                                    <input id="ctl00_formContentHolder_chkPkykCatg" type="checkbox" name="ctl00$formContentHolder$chkPkykCatg"><label for="ctl00_formContentHolder_chkPkykCatg">Poke Yoke</label>
+                                </td>
+                                <td align="right" valign="top">Work Area
+                                </td>
+                                <td align="left" valign="top" colspan="3">
+                                    <input name="ctl00$formContentHolder$txtWorkArea" type="text" id="ctl00_formContentHolder_txtWorkArea" class="SMLTextinputText" style="width:90%;">
+                                    <br>
+                                    <span id="ctl00_formContentHolder_RequiredFieldValidator2" class="SMLLabel" style="color:Red;display:none;">Enter Work Area</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right" valign="middle">
+                                    
+                                </td>
+                                <td align="left" colspan="3" valign="top">
+                                    
+                                </td>
+                                <td align="right" valign="top">&nbsp;</td>
+                                <td align="left" colspan="3" valign="top">&nbsp;</td>
+                            </tr>
+                        </tbody></table>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="height: 10px"></td>
+                </tr>
+                <tr>
+                    <td align="center" valign="top" class="SMLLabel">
+                        <table border="0" cellspacing="0" cellpadding="0" width="98%" class="SMLTable">
+                            <tbody><tr>
+                                <td align="left" valign="top" style="width: 65%; border-right: solid; border-color: red">
+                                    <table border="0" cellspacing="0" cellpadding="3" width="100%">
+                                        <tbody><tr>
+                                            <td align="right" valign="top">(1) Problem
+                                            </td>
+                                            <td align="left" valign="top">
+                                                <textarea name="ctl00$formContentHolder$txtProblem" rows="2" cols="20" id="ctl00_formContentHolder_txtProblem" class="SMLTextinputText" style="height:50px;width:300px;"></textarea>
+                                                <br>
+                                                <span id="ctl00_formContentHolder_RequiredFieldValidator4" class="SMLLabel" style="color:Red;display:none;">Enter Problem</span>
+                                            </td>
+                                            <td align="right" valign="top">(5) Kaizen Idea
+                                            </td>
+                                            <td align="left" valign="top">
+                                                <textarea name="ctl00$formContentHolder$txtKaizenIdea" rows="2" cols="20" id="ctl00_formContentHolder_txtKaizenIdea" class="SMLTextinputText" style="height:50px;width:300px;"></textarea>
+                                                <br>
+                                                <span id="ctl00_formContentHolder_RequiredFieldValidator7" class="SMLLabel" style="color:Red;display:none;">Enter Kaizen Idea</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right" valign="top">(2) Impact of Problem
+                                            </td>
+                                            <td align="left" valign="top">
+                                                <textarea name="ctl00$formContentHolder$txtImpactOfProblem" rows="2" cols="20" id="ctl00_formContentHolder_txtImpactOfProblem" class="SMLTextinputText" style="height:50px;width:300px;"></textarea>
+                                            </td>
+                                            <td align="right" valign="top">(6) Counter Measures/ Improvement Carried Out
+                                            </td>
+                                            <td align="left" valign="top">
+                                                <textarea name="ctl00$formContentHolder$txtCounterMeasure" rows="2" cols="20" id="ctl00_formContentHolder_txtCounterMeasure" class="SMLTextinputText" style="height:50px;width:300px;"></textarea>
+                                                <br>
+                                                <span id="ctl00_formContentHolder_RequiredFieldValidator6" class="SMLLabel" style="color:Red;display:none;">Enter Counter Measures</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right" valign="top">(3) Before Improvement Status
+                                            </td>
+                                            <td align="left" valign="top">
+                                                <textarea name="ctl00$formContentHolder$txtBeforeImprovement" rows="2" cols="20" id="ctl00_formContentHolder_txtBeforeImprovement" class="SMLTextinputText" style="height:50px;width:300px;"></textarea><br>
+                                                <input type="file" name="ctl00$formContentHolder$FileUpload1_Before" id="FileUpload1_Before" onchange="this.form.submit()">
+                                                
+                                                <br>
+                                                
+
+                                            </td>
+                                            <td align="right" valign="top">(7) After Improvement Status
+                                            </td>
+                                            <td align="left" valign="top">
+                                                <textarea name="ctl00$formContentHolder$txtAfterImprovement" rows="2" cols="20" id="ctl00_formContentHolder_txtAfterImprovement" class="SMLTextinputText" style="height:50px;width:300px;"></textarea><br>
+                                                <input type="file" name="ctl00$formContentHolder$FileUpload1_After" id="FileUpload1_After" onchange="this.form.submit()">
+                                                
+                                                <br>
+                                                
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right" valign="top">(4) Root Cause of Problem
+                                            </td>
+                                            <td align="left" valign="top">
+                                                <textarea name="ctl00$formContentHolder$txtRootCause" rows="2" cols="20" id="ctl00_formContentHolder_txtRootCause" class="SMLTextinputText" style="height:50px;width:300px;"></textarea>
+                                                <br>
+                                                <span id="ctl00_formContentHolder_RequiredFieldValidator8" class="SMLLabel" style="color:Red;display:none;">Enter Root Cause</span>
+                                            </td>
+                                            <td align="right" valign="top">(8) Benefits of Kaizen
+                                            </td>
+                                            <td align="left" valign="top">
+                                                <textarea name="ctl00$formContentHolder$txtBenefits" rows="2" cols="20" id="ctl00_formContentHolder_txtBenefits" class="SMLTextinputText" style="height:50px;width:300px;"></textarea>
+                                                <br>
+                                                <span id="ctl00_formContentHolder_RequiredFieldValidator9" class="SMLLabel" style="color:Red;display:none;">Enter Benefits of Kaizen</span>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </td>
+                                <td align="left" valign="top">
+                                    <table border="0" cellspacing="0" cellpadding="3" width="100%">
+                                        <tbody><tr>
+                                            <td align="center" valign="top" style="padding-top: 10px">
+                                                <b>TEAM MEMBER</b>
+                                                <table class="SMLTable" width="99%">
+                                                    <tbody><tr id="ctl00_formContentHolder_tr_Employee1" style="background-color: #df9696">
+		<td align="left" valign="top" class="SMLLabel" style="color: #FFFFFF; font-weight: bold">EMPLOYEE NAME</td>
+		<td align="left" valign="top" class="SMLLabel" style="color: #FFFFFF; font-weight: bold">TYPE</td>
+		<td align="right" valign="top" class="SMLLabel" style="color: #FFFFFF; font-weight: bold">ADD</td>
+	</tr>
+	
+                                                    <tr id="ctl00_formContentHolder_tr_Employee2">
+		<td align="left" valign="top">
+                                                            <input name="ctl00$formContentHolder$txtFindEmployee" type="text" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$formContentHolder$txtFindEmployee\&#39;,\&#39;\&#39;)&#39;, 0)" onkeypress="if (WebForm_TextBoxKeyHandler(event) == false) return false;" id="ctl00_formContentHolder_txtFindEmployee" class="SMLTextinputText" placeholder="Find emp.." style="width:100px;">
+                                                            <select name="ctl00$formContentHolder$ddEmployee" id="ctl00_formContentHolder_ddEmployee" class="SMLDropdownbox" style="width:150px;">
+			<option value="--SELECT--">--SELECT--</option>
+
+		</select>
+                                                        </td>
+		<td align="left" valign="top">
+                                                            <select name="ctl00$formContentHolder$ddType" id="ctl00_formContentHolder_ddType" class="SMLDropdownbox" style="width:100px;">
+			<option value="--SELECT--">--SELECT--</option>
+			<option value="I">INITIATOR</option>
+			<option value="L">TEAM LEADER</option>
+			<option value="M">TEAM MEMBER</option>
+
+		</select>
+                                                        </td>
+		<td align="right" valign="top">
+                                                            <input type="submit" name="ctl00$formContentHolder$btnLoginAdd" value="Add" id="ctl00_formContentHolder_btnLoginAdd" class="SMLButton">
+                                                        </td>
+	</tr>
+	
+                                                    <tr>
+                                                        <td colspan="3">&nbsp;
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="center" valign="top" colspan="3">
+                                                            <div>
+
+	</div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody></table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top" style="padding-top: 10px">
+                                                <table border="0" cellspacing="0" cellpadding="3" width="100%">
+                                                    <tbody><tr>
+                                                        <td align="left" valign="top">Team Leader
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            
+                                                            <input name="ctl00$formContentHolder$txtTeamLeaderName" type="text" id="ctl00_formContentHolder_txtTeamLeaderName" disabled="disabled" class="SMLTextinputText" style="width:250px;">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="left" valign="top">Initiator
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            
+                                                            <input name="ctl00$formContentHolder$txtInitiatorName" type="text" id="ctl00_formContentHolder_txtInitiatorName" disabled="disabled" class="SMLTextinputText" style="width:250px;">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="left" valign="top">Deptt HOD
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            <select name="ctl00$formContentHolder$ddHOD" id="ctl00_formContentHolder_ddHOD" class="SMLDropdownbox" style="width:252px;">
+		<option value="--SELECT--">--SELECT--</option>
+
+	</select>
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                </tbody></table>
+                                            </td>
+                                        </tr>
+
+                                    </tbody></table>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td align="center" valign="top" class="SMLLabel">
+                        <table border="0" cellspacing="0" cellpadding="0" width="98%" class="SMLTable">
+                            <tbody><tr>
+                                <td align="left" valign="top" style="width: 65%; border-right: solid; border-color: red">
+                                    <table border="0" cellspacing="0" cellpadding="3" width="100%">
+                                        <tbody><tr>
+                                            <th align="center" valign="top" colspan="4">Standardization
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td align="right" valign="top">Change in SOP/WP/WI
+                                            </td>
+                                            <td align="left" valign="top">
+                                                <input name="ctl00$formContentHolder$txtChangeInSOP" type="text" id="ctl00_formContentHolder_txtChangeInSOP" class="SMLTextinputText" style="width:200px;">
+                                            </td>
+                                            <td align="right" valign="top">Change in Drawing
+                                            </td>
+                                            <td align="left" valign="top">
+                                                <input name="ctl00$formContentHolder$txtChangeInDrawing" type="text" id="ctl00_formContentHolder_txtChangeInDrawing" class="SMLTextinputText" style="width:200px;">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right" valign="top">Any Other
+                                            </td>
+                                            <td align="left" valign="top">
+                                                <input name="ctl00$formContentHolder$txtAnyOther" type="text" id="ctl00_formContentHolder_txtAnyOther" class="SMLTextinputText" style="width:200px;">
+                                            </td>
+                                            <td align="right" valign="top">Holding the Gains	
+                                            </td>
+                                            <td align="left" valign="top">
+                                                <input name="ctl00$formContentHolder$txtHoldingGains" type="text" id="ctl00_formContentHolder_txtHoldingGains" class="SMLTextinputText" style="width:200px;">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right" valign="top">Responsibility
+                                            </td>
+                                            <td align="left" valign="top">
+                                                <input name="ctl00$formContentHolder$txtResponsibility_Standardization" type="text" id="ctl00_formContentHolder_txtResponsibility_Standardization" class="SMLTextinputText" style="width:200px;">
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </td>
+                                <td align="left" valign="top">
+                                    <table border="0" cellspacing="0" cellpadding="3" width="100%">
+                                        <tbody><tr>
+                                            <th align="center" valign="middle" colspan="2">Horizontal Deployment          
+                                                        <span class="SMLCheckbox"><input id="ctl00_formContentHolder_chkHorizontalDeployment" type="checkbox" name="ctl00$formContentHolder$chkHorizontalDeployment"></span>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td align="right" valign="top">Where
+                                            </td>
+                                            <td align="left" valign="top">
+                                                <input name="ctl00$formContentHolder$txtWhere" type="text" id="ctl00_formContentHolder_txtWhere" class="SMLTextinputText" style="width:200px;">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right" valign="top">Responsibility
+                                            </td>
+                                            <td align="left" valign="top">
+                                                <input name="ctl00$formContentHolder$txtResponsibility_Horizontal" type="text" id="ctl00_formContentHolder_txtResponsibility_Horizontal" class="SMLTextinputText" style="width:200px;">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right" valign="top">Target Date	
+                                            </td>
+                                            <td align="left" valign="top">
+                                                <input name="ctl00$formContentHolder$txtTargetDate" type="text" id="ctl00_formContentHolder_txtTargetDate" class="SMLTextinputText" style="width:200px;">
+                                                
+                                                <br>
+                                                <span id="ctl00_formContentHolder_RegularExpressionValidator3" class="SMLLabel" style="color:Red;display:none;">Invalid Date. Format: 01/04/2018.</span>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </td>
+                </tr>
+                <tr><td align="left" valign="bottom">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="SMLCheckbox"><input id="ctl00_formContentHolder_chkConfirm" type="checkbox" name="ctl00$formContentHolder$chkConfirm"></span>
+
+                    &nbsp;
+
+                    <span id="ctl00_formContentHolder_lblconfirm" class="SMLLabel"><b>Declaration: </b>I/We acknowledge that, this is our team generated &amp; implemented idea and also not claimed in any other scheme such as Suggestion Scheme etc.</span>
+                    </td></tr>
+                <tr>
+                    <td align="center" valign="top">
+                        <input id="ctl00_formContentHolder_chkPost" type="checkbox" name="ctl00$formContentHolder$chkPost"><label for="ctl00_formContentHolder_chkPost">Post</label>
+                        <input type="button" name="ctl00$formContentHolder$btnSubmit" value="Submit" onclick="if (!Page_ClientValidate()){ return false; } this.disabled = true; this.value = &#39;Saving...&#39;;WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$formContentHolder$btnSubmit&quot;, &quot;&quot;, true, &quot;submit&quot;, &quot;&quot;, false, true))" id="ctl00_formContentHolder_btnSubmit" class="SMLButton">
+                        <div id="ctl00_formContentHolder_ValidationSummary1" style="color:Red;display:none;">
+
+	</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;
+                    </td>
+                </tr>
+            </tbody></table>
+        
+</div>
+
+                    </td>
+                </tr>
+            </tbody></table>
+            <!--  Footer    -->
+            <table style="width: 100%" cellspacing="0" cellpadding="0">
+                <tbody>
+                    <tr bgcolor="#4C9AE9" height="20">
+                        <td class="SMLFooter" colspan="4" align="center">
+                            <b>All Copyrights Reserved © SML ISUZU Limited           
+                            </b>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    
+<script type="text/javascript">
+//<![CDATA[
+var Page_ValidationSummaries =  new Array(document.getElementById("ctl00_formContentHolder_ValidationSummary1"));
+var Page_Validators =  new Array(document.getElementById("ctl00_formContentHolder_RequiredFieldValidator3"), document.getElementById("ctl00_formContentHolder_RegularExpressionValidator2"), document.getElementById("ctl00_formContentHolder_RegularExpressionValidator4"), document.getElementById("ctl00_formContentHolder_RequiredFieldValidator1"), document.getElementById("ctl00_formContentHolder_RequiredFieldValidator5"), document.getElementById("ctl00_formContentHolder_RegularExpressionValidator1"), document.getElementById("ctl00_formContentHolder_RequiredFieldValidator2"), document.getElementById("ctl00_formContentHolder_RequiredFieldValidator4"), document.getElementById("ctl00_formContentHolder_RequiredFieldValidator7"), document.getElementById("ctl00_formContentHolder_RequiredFieldValidator6"), document.getElementById("ctl00_formContentHolder_RequiredFieldValidator8"), document.getElementById("ctl00_formContentHolder_RequiredFieldValidator9"), document.getElementById("ctl00_formContentHolder_RegularExpressionValidator3"));
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var ctl00_formContentHolder_RequiredFieldValidator3 = document.all ? document.all["ctl00_formContentHolder_RequiredFieldValidator3"] : document.getElementById("ctl00_formContentHolder_RequiredFieldValidator3");
+ctl00_formContentHolder_RequiredFieldValidator3.controltovalidate = "ctl00_formContentHolder_txtStartDate";
+ctl00_formContentHolder_RequiredFieldValidator3.focusOnError = "t";
+ctl00_formContentHolder_RequiredFieldValidator3.errormessage = "Enter Start Date";
+ctl00_formContentHolder_RequiredFieldValidator3.display = "Dynamic";
+ctl00_formContentHolder_RequiredFieldValidator3.validationGroup = "submit";
+ctl00_formContentHolder_RequiredFieldValidator3.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_formContentHolder_RequiredFieldValidator3.initialvalue = "";
+var ctl00_formContentHolder_RegularExpressionValidator2 = document.all ? document.all["ctl00_formContentHolder_RegularExpressionValidator2"] : document.getElementById("ctl00_formContentHolder_RegularExpressionValidator2");
+ctl00_formContentHolder_RegularExpressionValidator2.controltovalidate = "ctl00_formContentHolder_txtStartDate";
+ctl00_formContentHolder_RegularExpressionValidator2.focusOnError = "t";
+ctl00_formContentHolder_RegularExpressionValidator2.errormessage = "Invalid Date. Format: 01/04/2018.";
+ctl00_formContentHolder_RegularExpressionValidator2.display = "Dynamic";
+ctl00_formContentHolder_RegularExpressionValidator2.validationGroup = "submit";
+ctl00_formContentHolder_RegularExpressionValidator2.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+ctl00_formContentHolder_RegularExpressionValidator2.validationexpression = "^(((0[1-9]|[12]\\d|3[01])\\/(0[13578]|1[02])\\/((19|[2-9]\\d)\\d{2}))|((0[1-9]|[12]\\d|30)\\/(0[13456789]|1[012])\\/((19|[2-9]\\d)\\d{2}))|((0[1-9]|1\\d|2[0-8])\\/02\\/((19|[2-9]\\d)\\d{2}))|(29\\/02\\/((1[6-9]|[2-9]\\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$";
+var ctl00_formContentHolder_RegularExpressionValidator4 = document.all ? document.all["ctl00_formContentHolder_RegularExpressionValidator4"] : document.getElementById("ctl00_formContentHolder_RegularExpressionValidator4");
+ctl00_formContentHolder_RegularExpressionValidator4.controltovalidate = "ctl00_formContentHolder_txtCutOffDate";
+ctl00_formContentHolder_RegularExpressionValidator4.focusOnError = "t";
+ctl00_formContentHolder_RegularExpressionValidator4.errormessage = "Invalid Date. Format: 01/04/2018.";
+ctl00_formContentHolder_RegularExpressionValidator4.display = "Dynamic";
+ctl00_formContentHolder_RegularExpressionValidator4.validationGroup = "submit";
+ctl00_formContentHolder_RegularExpressionValidator4.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+ctl00_formContentHolder_RegularExpressionValidator4.validationexpression = "^(((0[1-9]|[12]\\d|3[01])\\/(0[13578]|1[02])\\/((19|[2-9]\\d)\\d{2}))|((0[1-9]|[12]\\d|30)\\/(0[13456789]|1[012])\\/((19|[2-9]\\d)\\d{2}))|((0[1-9]|1\\d|2[0-8])\\/02\\/((19|[2-9]\\d)\\d{2}))|(29\\/02\\/((1[6-9]|[2-9]\\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$";
+var ctl00_formContentHolder_RequiredFieldValidator1 = document.all ? document.all["ctl00_formContentHolder_RequiredFieldValidator1"] : document.getElementById("ctl00_formContentHolder_RequiredFieldValidator1");
+ctl00_formContentHolder_RequiredFieldValidator1.controltovalidate = "ctl00_formContentHolder_ddPlant";
+ctl00_formContentHolder_RequiredFieldValidator1.focusOnError = "t";
+ctl00_formContentHolder_RequiredFieldValidator1.errormessage = "Select Plant";
+ctl00_formContentHolder_RequiredFieldValidator1.display = "Dynamic";
+ctl00_formContentHolder_RequiredFieldValidator1.validationGroup = "submit";
+ctl00_formContentHolder_RequiredFieldValidator1.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_formContentHolder_RequiredFieldValidator1.initialvalue = "--SELECT--";
+var ctl00_formContentHolder_RequiredFieldValidator5 = document.all ? document.all["ctl00_formContentHolder_RequiredFieldValidator5"] : document.getElementById("ctl00_formContentHolder_RequiredFieldValidator5");
+ctl00_formContentHolder_RequiredFieldValidator5.controltovalidate = "ctl00_formContentHolder_txtCompletionDate";
+ctl00_formContentHolder_RequiredFieldValidator5.focusOnError = "t";
+ctl00_formContentHolder_RequiredFieldValidator5.errormessage = "Enter Completion Date";
+ctl00_formContentHolder_RequiredFieldValidator5.display = "Dynamic";
+ctl00_formContentHolder_RequiredFieldValidator5.validationGroup = "submit";
+ctl00_formContentHolder_RequiredFieldValidator5.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_formContentHolder_RequiredFieldValidator5.initialvalue = "";
+var ctl00_formContentHolder_RegularExpressionValidator1 = document.all ? document.all["ctl00_formContentHolder_RegularExpressionValidator1"] : document.getElementById("ctl00_formContentHolder_RegularExpressionValidator1");
+ctl00_formContentHolder_RegularExpressionValidator1.controltovalidate = "ctl00_formContentHolder_txtCompletionDate";
+ctl00_formContentHolder_RegularExpressionValidator1.focusOnError = "t";
+ctl00_formContentHolder_RegularExpressionValidator1.errormessage = "Invalid Date. Format: 01/04/2018.";
+ctl00_formContentHolder_RegularExpressionValidator1.display = "Dynamic";
+ctl00_formContentHolder_RegularExpressionValidator1.validationGroup = "submit";
+ctl00_formContentHolder_RegularExpressionValidator1.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+ctl00_formContentHolder_RegularExpressionValidator1.validationexpression = "^(((0[1-9]|[12]\\d|3[01])\\/(0[13578]|1[02])\\/((19|[2-9]\\d)\\d{2}))|((0[1-9]|[12]\\d|30)\\/(0[13456789]|1[012])\\/((19|[2-9]\\d)\\d{2}))|((0[1-9]|1\\d|2[0-8])\\/02\\/((19|[2-9]\\d)\\d{2}))|(29\\/02\\/((1[6-9]|[2-9]\\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$";
+var ctl00_formContentHolder_RequiredFieldValidator2 = document.all ? document.all["ctl00_formContentHolder_RequiredFieldValidator2"] : document.getElementById("ctl00_formContentHolder_RequiredFieldValidator2");
+ctl00_formContentHolder_RequiredFieldValidator2.controltovalidate = "ctl00_formContentHolder_txtWorkArea";
+ctl00_formContentHolder_RequiredFieldValidator2.focusOnError = "t";
+ctl00_formContentHolder_RequiredFieldValidator2.errormessage = "Enter Work Area";
+ctl00_formContentHolder_RequiredFieldValidator2.display = "Dynamic";
+ctl00_formContentHolder_RequiredFieldValidator2.validationGroup = "submit";
+ctl00_formContentHolder_RequiredFieldValidator2.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_formContentHolder_RequiredFieldValidator2.initialvalue = "";
+var ctl00_formContentHolder_RequiredFieldValidator4 = document.all ? document.all["ctl00_formContentHolder_RequiredFieldValidator4"] : document.getElementById("ctl00_formContentHolder_RequiredFieldValidator4");
+ctl00_formContentHolder_RequiredFieldValidator4.controltovalidate = "ctl00_formContentHolder_txtProblem";
+ctl00_formContentHolder_RequiredFieldValidator4.focusOnError = "t";
+ctl00_formContentHolder_RequiredFieldValidator4.errormessage = "Enter Problem";
+ctl00_formContentHolder_RequiredFieldValidator4.display = "Dynamic";
+ctl00_formContentHolder_RequiredFieldValidator4.validationGroup = "submit";
+ctl00_formContentHolder_RequiredFieldValidator4.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_formContentHolder_RequiredFieldValidator4.initialvalue = "";
+var ctl00_formContentHolder_RequiredFieldValidator7 = document.all ? document.all["ctl00_formContentHolder_RequiredFieldValidator7"] : document.getElementById("ctl00_formContentHolder_RequiredFieldValidator7");
+ctl00_formContentHolder_RequiredFieldValidator7.controltovalidate = "ctl00_formContentHolder_txtKaizenIdea";
+ctl00_formContentHolder_RequiredFieldValidator7.focusOnError = "t";
+ctl00_formContentHolder_RequiredFieldValidator7.errormessage = "Enter Kaizen Idea";
+ctl00_formContentHolder_RequiredFieldValidator7.display = "Dynamic";
+ctl00_formContentHolder_RequiredFieldValidator7.validationGroup = "submit";
+ctl00_formContentHolder_RequiredFieldValidator7.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_formContentHolder_RequiredFieldValidator7.initialvalue = "";
+var ctl00_formContentHolder_RequiredFieldValidator6 = document.all ? document.all["ctl00_formContentHolder_RequiredFieldValidator6"] : document.getElementById("ctl00_formContentHolder_RequiredFieldValidator6");
+ctl00_formContentHolder_RequiredFieldValidator6.controltovalidate = "ctl00_formContentHolder_txtCounterMeasure";
+ctl00_formContentHolder_RequiredFieldValidator6.focusOnError = "t";
+ctl00_formContentHolder_RequiredFieldValidator6.errormessage = "Enter Counter Measures";
+ctl00_formContentHolder_RequiredFieldValidator6.display = "Dynamic";
+ctl00_formContentHolder_RequiredFieldValidator6.validationGroup = "submit";
+ctl00_formContentHolder_RequiredFieldValidator6.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_formContentHolder_RequiredFieldValidator6.initialvalue = "";
+var ctl00_formContentHolder_RequiredFieldValidator8 = document.all ? document.all["ctl00_formContentHolder_RequiredFieldValidator8"] : document.getElementById("ctl00_formContentHolder_RequiredFieldValidator8");
+ctl00_formContentHolder_RequiredFieldValidator8.controltovalidate = "ctl00_formContentHolder_txtRootCause";
+ctl00_formContentHolder_RequiredFieldValidator8.focusOnError = "t";
+ctl00_formContentHolder_RequiredFieldValidator8.errormessage = "Enter Root Cause";
+ctl00_formContentHolder_RequiredFieldValidator8.display = "Dynamic";
+ctl00_formContentHolder_RequiredFieldValidator8.validationGroup = "submit";
+ctl00_formContentHolder_RequiredFieldValidator8.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_formContentHolder_RequiredFieldValidator8.initialvalue = "";
+var ctl00_formContentHolder_RequiredFieldValidator9 = document.all ? document.all["ctl00_formContentHolder_RequiredFieldValidator9"] : document.getElementById("ctl00_formContentHolder_RequiredFieldValidator9");
+ctl00_formContentHolder_RequiredFieldValidator9.controltovalidate = "ctl00_formContentHolder_txtBenefits";
+ctl00_formContentHolder_RequiredFieldValidator9.focusOnError = "t";
+ctl00_formContentHolder_RequiredFieldValidator9.errormessage = "Enter Benefits of Kaizen";
+ctl00_formContentHolder_RequiredFieldValidator9.display = "Dynamic";
+ctl00_formContentHolder_RequiredFieldValidator9.validationGroup = "submit";
+ctl00_formContentHolder_RequiredFieldValidator9.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_formContentHolder_RequiredFieldValidator9.initialvalue = "";
+var ctl00_formContentHolder_RegularExpressionValidator3 = document.all ? document.all["ctl00_formContentHolder_RegularExpressionValidator3"] : document.getElementById("ctl00_formContentHolder_RegularExpressionValidator3");
+ctl00_formContentHolder_RegularExpressionValidator3.controltovalidate = "ctl00_formContentHolder_txtTargetDate";
+ctl00_formContentHolder_RegularExpressionValidator3.focusOnError = "t";
+ctl00_formContentHolder_RegularExpressionValidator3.errormessage = "Invalid Date. Format: 01/04/2018.";
+ctl00_formContentHolder_RegularExpressionValidator3.display = "Dynamic";
+ctl00_formContentHolder_RegularExpressionValidator3.validationGroup = "submit";
+ctl00_formContentHolder_RegularExpressionValidator3.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+ctl00_formContentHolder_RegularExpressionValidator3.validationexpression = "^(((0[1-9]|[12]\\d|3[01])\\/(0[13578]|1[02])\\/((19|[2-9]\\d)\\d{2}))|((0[1-9]|[12]\\d|30)\\/(0[13456789]|1[012])\\/((19|[2-9]\\d)\\d{2}))|((0[1-9]|1\\d|2[0-8])\\/02\\/((19|[2-9]\\d)\\d{2}))|(29\\/02\\/((1[6-9]|[2-9]\\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$";
+var ctl00_formContentHolder_ValidationSummary1 = document.all ? document.all["ctl00_formContentHolder_ValidationSummary1"] : document.getElementById("ctl00_formContentHolder_ValidationSummary1");
+ctl00_formContentHolder_ValidationSummary1.headertext = "Attention!!!";
+ctl00_formContentHolder_ValidationSummary1.showmessagebox = "True";
+ctl00_formContentHolder_ValidationSummary1.showsummary = "False";
+ctl00_formContentHolder_ValidationSummary1.validationGroup = "submit";
+//]]>
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        
+(function(id) {
+    var e = document.getElementById(id);
+    if (e) {
+        e.dispose = function() {
+            Array.remove(Page_ValidationSummaries, document.getElementById(id));
+        }
+        e = null;
+    }
+})('ctl00_formContentHolder_ValidationSummary1');
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.CalendarBehavior, {"format":"dd/MM/yyyy","id":"ctl00_formContentHolder_CalendarExtender1"}, null, null, $get("ctl00_formContentHolder_txtStartDate"));
+});
+
+document.getElementById('ctl00_formContentHolder_RequiredFieldValidator3').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_formContentHolder_RequiredFieldValidator3'));
+}
+
+document.getElementById('ctl00_formContentHolder_RegularExpressionValidator2').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_formContentHolder_RegularExpressionValidator2'));
+}
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.CalendarBehavior, {"format":"dd/MM/yyyy","id":"ctl00_formContentHolder_CalendarExtender4"}, null, null, $get("ctl00_formContentHolder_txtCutOffDate"));
+});
+
+document.getElementById('ctl00_formContentHolder_RegularExpressionValidator4').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_formContentHolder_RegularExpressionValidator4'));
+}
+
+document.getElementById('ctl00_formContentHolder_RequiredFieldValidator1').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_formContentHolder_RequiredFieldValidator1'));
+}
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.CalendarBehavior, {"format":"dd/MM/yyyy","id":"ctl00_formContentHolder_CalendarExtender2"}, null, null, $get("ctl00_formContentHolder_txtCompletionDate"));
+});
+
+document.getElementById('ctl00_formContentHolder_RequiredFieldValidator5').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_formContentHolder_RequiredFieldValidator5'));
+}
+
+document.getElementById('ctl00_formContentHolder_RegularExpressionValidator1').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_formContentHolder_RegularExpressionValidator1'));
+}
+
+document.getElementById('ctl00_formContentHolder_RequiredFieldValidator2').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_formContentHolder_RequiredFieldValidator2'));
+}
+
+document.getElementById('ctl00_formContentHolder_RequiredFieldValidator4').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_formContentHolder_RequiredFieldValidator4'));
+}
+
+document.getElementById('ctl00_formContentHolder_RequiredFieldValidator7').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_formContentHolder_RequiredFieldValidator7'));
+}
+
+document.getElementById('ctl00_formContentHolder_RequiredFieldValidator6').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_formContentHolder_RequiredFieldValidator6'));
+}
+
+document.getElementById('ctl00_formContentHolder_RequiredFieldValidator8').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_formContentHolder_RequiredFieldValidator8'));
+}
+
+document.getElementById('ctl00_formContentHolder_RequiredFieldValidator9').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_formContentHolder_RequiredFieldValidator9'));
+}
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.CalendarBehavior, {"format":"dd/MM/yyyy","id":"ctl00_formContentHolder_CalendarExtender3"}, null, null, $get("ctl00_formContentHolder_txtTargetDate"));
+});
+
+document.getElementById('ctl00_formContentHolder_RegularExpressionValidator3').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_formContentHolder_RegularExpressionValidator3'));
+}
+//]]>
+</script>
+</form>
+
+
+</body></html>

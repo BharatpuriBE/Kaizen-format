@@ -1,0 +1,102 @@
+BODY {
+	SCROLLBAR-ARROW-COLOR: darkgrey; SCROLLBAR-FACE-COLOR: white; SCROLLBAR-BASE-COLOR: blue; SCROLLBAR-HIGHLIGHT-COLOR: darkgrey; SCROLLBAR-SHADOW-COLOR: lightgrey; SCROLLBAR-TRACK-COLOR: white; scrollbars-3dlight-color: darkgrey
+}
+.SMLFieldCaptionTD {
+	FONT-FAMILY: Verdana; COLOR: #000000; FONT-SIZE: 8pt; FONT-WEIGHT: bold
+}
+.SMLFieldCaptionColorTD {
+	FONT-FAMILY: Verdana; FONT-SIZE: 8pt; FONT-WEIGHT: bold
+}
+.SMLTextinputNum {
+	TEXT-ALIGN: right; FONT-FAMILY: Verdana; COLOR: darkred; FONT-SIZE: 8pt
+}
+.SMLTextinputText {
+	TEXT-ALIGN: left; FONT-FAMILY: Verdana; COLOR: darkred; FONT-SIZE: 8pt
+}
+.SMLTextinputTextWB {
+	TEXT-ALIGN: left; FONT-FAMILY: Verdana; COLOR: darkred; FONT-SIZE: 8pt
+}
+.SMLLblError {
+	FONT-FAMILY: Verdana; COLOR: red; FONT-SIZE: 9pt; FONT-WEIGHT: bold
+}
+.SMLLabel {
+	FONT-FAMILY: Verdana; FONT-SIZE: 8pt
+}
+.SMLTable {
+	BORDER-BOTTOM: #b76969 1pt solid; BORDER-LEFT: #b76969 1pt solid; BACKGROUND-COLOR: #ffffff; BORDER-COLLAPSE: collapse; FONT-FAMILY: Verdana; COLOR: #000000; BORDER-TOP: #b76969 1pt solid; BORDER-RIGHT: #b76969 1pt solid
+}
+.SMLTDHeaderFont {
+	BORDER-BOTTOM: red thin solid; BORDER-LEFT: red thin solid; FONT-FAMILY: Verdana; COLOR: #990700; FONT-SIZE: 9pt; BORDER-TOP: red thin solid; FONT-WEIGHT: bold; BORDER-RIGHT: red thin solid
+}
+.SMLTableHeaderFont {
+	BACKGROUND-IMAGE: url(image/formheader.jpg); TEXT-ALIGN: center; BACKGROUND-COLOR: red; FONT-FAMILY: Verdana; COLOR: #841401; FONT-SIZE: 10pt; FONT-WEIGHT: bold
+}
+.SMLTableHeaderLeftAlignFont {
+	BACKGROUND-IMAGE: url(image/formheader.jpg); TEXT-ALIGN: left; BACKGROUND-COLOR: #cfafaf; FONT-FAMILY: Verdana; COLOR: #841401; FONT-SIZE: 10pt; FONT-WEIGHT: bold
+}
+.SMLFormHeaderFont {
+	BACKGROUND-IMAGE: url(image/formheader.jpg); TEXT-ALIGN: center; FONT-FAMILY: Verdana; FONT-SIZE: 11pt; FONT-WEIGHT: bold
+}
+.SMLTestFormHeaderFont {
+	BACKGROUND-IMAGE: url(image/formheader.jpg); TEXT-ALIGN: center; FONT-FAMILY: Verdana; FONT-SIZE: 11pt; FONT-WEIGHT: bold
+}
+.SMLButtonTD {
+	BORDER-BOTTOM: #b3cae1 1px solid; TEXT-ALIGN: center; BORDER-LEFT: #b3cae1 1px solid; BACKGROUND-COLOR: #afb7cf; FONT-FAMILY: Verdana; COLOR: white; FONT-SIZE: 9pt; BORDER-TOP: #b3cae1 1px solid; BORDER-RIGHT: #b3cae1 1px solid
+}
+.SMLButton {
+	BORDER-BOTTOM: #e1b3b3 1px solid; BORDER-LEFT: #e1b3b3 1px solid; BACKGROUND-COLOR: #cfafaf; FONT-FAMILY: Verdana; COLOR: #831301; FONT-SIZE: 9pt; BORDER-TOP: #e1b3b3 1px solid; BORDER-RIGHT: #e1b3b3 1px solid
+}
+.SMLDropdownbox {
+	FONT-FAMILY: Verdana; COLOR: darkred; FONT-SIZE: 8pt
+}
+.SMLRadiobuttonlist {
+	FONT-FAMILY: Verdana; FONT-SIZE: 8pt
+}
+.SMLCheckboxlist {
+	FONT-FAMILY: Verdana; HEIGHT: 2px; COLOR: darkred; FONT-SIZE: 8pt
+}
+.SMLCheckbox {
+	FONT-FAMILY: Verdana; COLOR: darkred; FONT-SIZE: 8pt
+}
+.SMLDataGridHeaderFont {
+	BACKGROUND-COLOR: #a82812; FONT-FAMILY: Verdana; COLOR: white; FONT-SIZE: 9pt; FONT-WEIGHT: bold
+}
+.SMLDataGridFooterFont {
+	BACKGROUND-COLOR: #a82812; FONT-FAMILY: Verdana; COLOR: white; FONT-SIZE: 8pt; FONT-WEIGHT: bold
+}
+.SMLDataGridBody {
+	BORDER-BOTTOM: white 1px solid; BORDER-LEFT: white 1px solid; BACKGROUND-COLOR: white; FONT-FAMILY: Verdana; COLOR: black; FONT-SIZE: 8pt; BORDER-TOP: white 1px solid; BORDER-RIGHT: white 1px solid
+}
+.SMLLinkButton {
+	FONT-FAMILY: Verdana; COLOR: blue; FONT-SIZE: 10pt; FONT-WEIGHT: bold
+}
+.SMLFrame {
+	COLOR: red
+}
+.SMLFieldCaptionTDRep {
+	FONT-FAMILY: Verdana; COLOR: #000000; FONT-SIZE: 9pt; FONT-WEIGHT: bold
+}
+.SMLFieldCaptionTDHead {
+	FONT-FAMILY: Verdana; COLOR: #000000; FONT-SIZE: 7pt; FONT-WEIGHT: bold
+}
+.SMLFieldCaptionTDDetails {
+	FONT-FAMILY: Verdana; COLOR: #000000; FONT-SIZE: 7pt
+}
+.SMLReadingQText {
+	FONT-FAMILY: Verdana; COLOR: #000000; FONT-SIZE: 10pt
+}
+.SMLDataGridSelectedStyle {
+	FONT-FAMILY: Verdana; COLOR: black; FONT-SIZE: 8pt; FONT-WEIGHT: bold
+}
+.SMLTotalLabel {
+	BACKGROUND-COLOR: white; FONT-FAMILY: Verdana; COLOR: navy; FONT-SIZE: 10pt; FONT-WEIGHT: bold
+}
+.SMLTracker {
+	FONT-FAMILY: Verdana; COLOR: #a21c06; FONT-SIZE: 8pt
+}
+.textSML {
+	FONT-VARIANT: normal; FONT-STYLE: normal; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; COLOR: #000000; FONT-SIZE: 11px; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+textover {
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; COLOR: #ffffff; FONT-SIZE: 11px; FONT-WEIGHT: normal; TEXT-DECORATION: underline
+}

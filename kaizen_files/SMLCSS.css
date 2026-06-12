@@ -1,0 +1,227 @@
+BODY {
+	SCROLLBAR-FACE-COLOR: white; MARGIN-TOP: 0px; SCROLLBAR-BASE-COLOR: blue; SCROLLBAR-SHADOW-COLOR: lightgrey; SCROLLBAR-TRACK-COLOR: white; scrollbars-3dlight-color: darkgrey
+}
+
+.UpdateProgress
+{
+    position: fixed;
+    z-index: 999;
+    height: 100%;
+    width: 100%;
+    top:0;
+    background-color: Black;
+    filter: alpha(opacity=60);
+    opacity: 0.6;
+    -moz-opacity: 0.8;
+}
+.UpdateProgress_Center
+{
+    z-index: 1000;
+    margin: 300px auto;
+    padding: 10px;
+    width: 130px;
+    background-color: white;
+    border-radius: 10px;
+    filter: alpha(opacity=100);
+    opacity: 1;
+}
+
+.ModalPopupBG
+{
+    background-color: black;
+    filter: alpha(opacity=50);
+    opacity: 0.7;
+}
+
+.modalPopup_panel
+{
+    Width:90%;
+    Height:85%;
+	background-color:#FFFFFF;/*FFD9D5*/
+	border-width:3px;
+	border-style:solid;
+	border-color:mediumspringgreen;	    
+    padding-left:20px;
+    padding-right:20px;
+    padding-bottom:20px;
+    overflow:scroll;
+	/*width:500px;*/
+}
+A.mainmenu:active {
+	FONT-FAMILY: Verdana; COLOR: #7e1e1e; FONT-SIZE: 10px; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+A.mainmenu:hover {
+	FONT-FAMILY: Verdana; COLOR: #ff7e00; FONT-SIZE: 10px; FONT-WEIGHT: bold; TEXT-DECORATION: underline
+}
+A.mainmenu:visited {
+	FONT-FAMILY: Verdana; COLOR: #7e1e1e; FONT-SIZE: 10px; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+.SMLFieldCaptionTD {
+	FONT-FAMILY: Verdana; COLOR: #843434; FONT-SIZE: 8pt; FONT-WEIGHT: bold
+}
+.SMLFieldCaptionColorTD {
+	FONT-FAMILY: Verdana; FONT-SIZE: 8pt; FONT-WEIGHT: bold
+}
+.SMLTextinputNum {
+	TEXT-ALIGN: right; FONT-FAMILY: Verdana; COLOR: black; FONT-SIZE: 8pt
+}
+.SMLTextinputText {
+	border: 1px solid #736f6e;
+	TEXT-ALIGN: left; 	FONT-FAMILY: Verdana; 	COLOR: black; 	FONT-SIZE: 8pt; 	margin-right: 0px;
+}
+.SMLTextinputTextWB {
+	TEXT-ALIGN: left; FONT-FAMILY: Verdana; COLOR: black; FONT-SIZE: 8pt
+}
+.SMLLblError {
+	FONT-FAMILY: Verdana; COLOR: red; FONT-SIZE: 9pt; FONT-WEIGHT: bold
+}
+.SMLLabel {
+	FONT-FAMILY: Verdana; COLOR: black; FONT-SIZE: 8pt
+}
+.SMLLabelLeftMenu A:visited {
+	FONT-FAMILY: Verdana; COLOR: #722727; FONT-SIZE: 9pt; FONT-WEIGHT: bold
+}
+.SMLLabelLeftMenu A:hover {
+	FONT-FAMILY: Verdana; COLOR: #f38282; FONT-SIZE: 9pt; FONT-WEIGHT: bold
+}
+.SMLHeader {
+	BORDER-BOTTOM: #b76969 1pt solid; BORDER-LEFT: #b76969 1pt solid; BACKGROUND-COLOR: #ffffff; BORDER-COLLAPSE: collapse; FONT-FAMILY: Verdana; COLOR: #000000; BORDER-TOP: #b76969 1pt solid; BORDER-RIGHT: #b76969 1pt solid
+}
+.SMLHeaderRow {
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=1,StartColorStr='#F08080',
+      EndColorStr='#FFFFFF'); PADDING-LEFT: 10px; FONT-FAMILY: Verdana; COLOR: #843434; FONT-SIZE: 8pt; FONT-WEIGHT: bold
+}
+.SMLTable {
+	BORDER-BOTTOM: #b76969 1pt solid; BORDER-LEFT: #b76969 1pt solid; BACKGROUND-COLOR: #ffffff; BORDER-COLLAPSE: collapse; FONT-FAMILY: Verdana; COLOR: #000000; BORDER-TOP: #b76969 1pt solid; BORDER-RIGHT: #b76969 1pt solid
+}
+.SMLTDHeaderFont {
+	BORDER-BOTTOM: navy thin solid; BORDER-LEFT: navy thin solid; FONT-FAMILY: Verdana; COLOR: #990000; FONT-SIZE: 9pt; BORDER-TOP: navy thin solid; FONT-WEIGHT: bold; BORDER-RIGHT: navy thin solid
+}
+.SMLTableHeaderFont {
+	BACKGROUND-IMAGE: url(image/formheader.jpg); TEXT-ALIGN: center; BACKGROUND-COLOR: navy; FONT-FAMILY: Verdana; COLOR: #801301; FONT-SIZE: 10pt; FONT-WEIGHT: bold
+}
+.SMLTableHeaderLeftAlignFont {
+	BACKGROUND-IMAGE: url(image/formheader.jpg); TEXT-ALIGN: left; BACKGROUND-COLOR: #cfafaf; FONT-FAMILY: Verdana; COLOR: #801301; FONT-SIZE: 10pt; FONT-WEIGHT: bold
+}
+.SMLFormHeaderFont {
+	TEXT-ALIGN: center; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=1,StartColorStr='#800517',
+      EndColorStr='#800517'); LINE-HEIGHT: 18px; BACKGROUND-COLOR: darkred; FONT-FAMILY: Verdana; COLOR: #fbb917; FONT-SIZE: 9pt; FONT-WEIGHT: bold
+}
+.SMLBBFormHeaderFont {
+	TEXT-ALIGN: center; LINE-HEIGHT: 18px; BACKGROUND-COLOR: #7c1200; FONT-FAMILY: Verdana; COLOR: #fbb917; FONT-SIZE: 9pt; FONT-WEIGHT: bold
+}
+.SMLCRMReportHeaderFont {
+	TEXT-ALIGN: center; LINE-HEIGHT: 18px; BACKGROUND-COLOR: #752828; FONT-FAMILY: Verdana; COLOR: #fbb917; FONT-SIZE: 9pt; FONT-WEIGHT: bold
+}
+.SMLPanel {
+	BACKGROUND-COLOR: #cb8787
+}
+.SMLTestFormHeaderFont {
+	BACKGROUND-IMAGE: url(image/formheader.jpg); TEXT-ALIGN: center; FONT-FAMILY: Verdana; FONT-SIZE: 11pt; FONT-WEIGHT: bold
+}
+.SMLButtonTD {
+	BORDER-BOTTOM: #c98f8f 0px solid; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr='#F08080',EndColorStr='#800517'); BORDER-LEFT: #c98f8f 1px solid; LINE-HEIGHT: 15px; BACKGROUND-COLOR: darkred; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; FONT-FAMILY: Verdana; COLOR: #fbb917; FONT-SIZE: 7pt; BORDER-TOP: #c98f8f 1px solid; BORDER-RIGHT: #c98f8f 0px solid
+}
+.SMLButton {
+	BORDER-BOTTOM: #c98f8f 0px solid; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr='#F08080',EndColorStr='#800517'); BORDER-LEFT: #c98f8f 1px solid; LINE-HEIGHT: 18px; BACKGROUND-COLOR: darkred; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; FONT-FAMILY: Verdana; COLOR: #fbb917; FONT-SIZE: 7pt; BORDER-TOP: #c98f8f 1px solid; BORDER-RIGHT: #c98f8f 0px solid;
+	width: 56px;
+}
+.SMLCheckboxlist {
+	FONT-FAMILY: Verdana; HEIGHT: 2px; COLOR: black; FONT-SIZE: 8pt
+}
+.SMLCheckbox {
+	FONT-FAMILY: Verdana; COLOR: black; FONT-SIZE: 8pt
+}
+.SMLDataGridHeaderRow1 {
+	BACKGROUND-COLOR:#f2d8d8; FONT-FAMILY: Verdana; COLOR: #723027; FONT-SIZE: 8pt
+}
+.SMLDataGridHeaderRow2 {
+	BACKGROUND-COLOR: white; FONT-FAMILY: Verdana; COLOR: #723027; FONT-SIZE: 8pt
+}
+.SMLDataGridHeaderFont {
+	BACKGROUND-COLOR: #df9696; FONT-FAMILY: Verdana; COLOR: white; FONT-SIZE: 9pt; FONT-WEIGHT: bold
+}
+.SMLDataGridFooterStyle {
+	BACKGROUND-COLOR: #df9696; FONT-FAMILY: Verdana; COLOR: white; FONT-SIZE: 8pt
+}
+.SMLDataGridFooterFont {
+	BACKGROUND-COLOR: #df9696; FONT-FAMILY: Verdana; COLOR: white; FONT-SIZE: 8pt; FONT-WEIGHT: bold
+}
+.SMLDataGridBody {
+	BORDER-BOTTOM: white 1px solid; TEXT-ALIGN: left; BORDER-LEFT: white 1px solid; BACKGROUND-COLOR: white; FONT-FAMILY: Verdana; COLOR: black; FONT-SIZE: 8pt; BORDER-TOP: white 1px solid; BORDER-RIGHT: white 1px solid
+}
+.SMLLinkButton {
+	FONT-FAMILY: Verdana; COLOR: #800517; FONT-SIZE: 8pt; FONT-WEIGHT: bold
+}
+.SMLLinkButtonTD {
+	FONT-FAMILY: Verdana; COLOR: #800517; FONT-SIZE: 8pt; FONT-WEIGHT: bold
+}
+.SMLLinkButtonTD {
+	FONT-FAMILY: Verdana; COLOR: #800517; FONT-SIZE: 8pt; FONT-WEIGHT: bold
+}
+.SMLFrame {
+	COLOR: darkred
+}
+.SMLFieldCaptionTDRep {
+	FONT-FAMILY: Verdana; COLOR: #000000; FONT-SIZE: 9pt; FONT-WEIGHT: bold
+}
+.SMLFieldCaptionTDHead {
+	FONT-FAMILY: Verdana; COLOR: #000000; FONT-SIZE: 7pt; FONT-WEIGHT: bold
+}
+.SMLFieldCaptionTDHeadNew {
+	FONT-FAMILY: Verdana; COLOR: #000000; FONT-SIZE: 8pt; FONT-WEIGHT: bold
+}
+.SMLFieldCaptionTDDetails {
+	FONT-FAMILY: Verdana; COLOR: #000000; FONT-SIZE: 7pt
+}
+.SMLReadingQText {
+	FONT-FAMILY: Verdana; COLOR: #000000; FONT-SIZE: 10pt
+}
+.SMLDataGridSElectedStyle {
+	BACKGROUND-COLOR: red; FONT-FAMILY: Verdana; COLOR: black; FONT-SIZE: 8pt; FONT-WEIGHT: bold
+}
+.SMLTotalLabel {
+	BACKGROUND-COLOR: red; FONT-FAMILY: Verdana; COLOR: navy; FONT-SIZE: 10pt; FONT-WEIGHT: bold
+}
+.SMLTracker {
+	FONT-FAMILY: Verdana; COLOR: #a21b04; FONT-SIZE: 8pt
+}
+.SMLFooter {
+	BACKGROUND-COLOR: #800517; FONT-FAMILY: Verdana; COLOR: #fbb917; FONT-SIZE: 7pt
+}
+.SMLBBFooter {
+	BACKGROUND-COLOR: #800517; FONT-FAMILY: Verdana; COLOR: #fbb917; FONT-SIZE: 7pt
+}
+.veryWeak {
+	WIDTH: 250px; BACKGROUND: #cccccc
+}
+.weak {
+	WIDTH: 50px; BACKGROUND: #ff0000
+}
+.average {
+	WIDTH: 100px; BACKGROUND: #ff5f5f
+}
+.strong {
+	WIDTH: 200px; BACKGROUND: #4dcd00
+}
+.excellent {
+	WIDTH: 250px; BACKGROUND: #399800
+}
+
+iframe.skm {
+	position:absolute;top:0px;left:0px;display:none;
+	}
+
+td.skmcur{
+	cursor:hand;
+}
+
+.skmsubmenu {
+				text-align : left; border : solid 1px #FBBD05;color:Black;
+				background-color:#FFEFC0;cursor:pointer; z-index:auto;
+				font-family : Verdana; font-size : small; font-weight : normal; line-height:20px;
+				vertical-align:middle;
+}
+.skmSelMenuItem {
+	background-color: #FBBD05;Color:Maroon;
+} 
